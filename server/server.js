@@ -19,7 +19,7 @@ app.use(morgan('tiny'));
 
 // DEVELOPMENT
 var http = require('http');
-var port = 3000;
+var port = 3001;
 var server = http.createServer(app);
 
 app.use(express.static(__dirname + '/../public'));
@@ -49,7 +49,7 @@ app.get('/transcripts', function(req,res) {
 })
 
 
-server.listen(port);
+server.listen(process.env.PORT || port);
 console.log('Working on Bender∞ on port ' + port);
 
 require('./Signaling-Server.js')(server, function(socket) {});
